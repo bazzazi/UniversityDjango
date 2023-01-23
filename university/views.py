@@ -38,8 +38,12 @@ def edit_student(request,pk):
         'form':forms
     }
     return render(request, 'university/edit_student.html',context=context)
-def read_student(request):
-    return render(request, 'university/read_student.html')
+def read_student(request,pk):
+    student=Student.objects.get(id=pk)
+    context={
+        'student':student
+    }
+    return render(request, 'university/read_student.html',context=context)
 
 # Content
 def add_content(request):
@@ -73,7 +77,11 @@ def edit_content(request,pk):
     }
     return render(request, 'university/edit_content.html',context=context)
 def read_content(request, pk):
-    return render(request, 'university/read_content.html')
+    content=Content.objects.get(id=pk)
+    context={
+        'content':content
+    }
+    return render(request, 'university/read_content.html',context=context)
 
 # Course
 def add_course(request):
@@ -107,7 +115,11 @@ def edit_course(request,pk):
     }
     return render(request, 'university/edit_course.html',context=context)
 def read_course(request, pk):
-    return render(request, 'university/read_course.html')
+    course=Course.objects.get(id=pk)
+    context={
+        'course':course
+    }
+    return render(request, 'university/read_course.html',context=context)
 
 # Registration
 def add_registration(request):
@@ -141,4 +153,8 @@ def edit_registration(request,pk):
     }
     return render(request, 'university/edit_registration.html',context=context)
 def read_registration(request, pk):
-    return render(request, 'university/read_registration.html')
+    registration=Content.objects.get(id=pk)
+    context={
+        'registration':registration
+    }
+    return render(request, 'university/read_registration.html',context=context)
