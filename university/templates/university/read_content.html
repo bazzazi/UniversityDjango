@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{%block title%}
+READ Content
+{%endblock%}
+{% block header %}
+<nav>
+    <a href="{% url 'add_content' %}">Add Content</a>
+    <a href="{% url 'remove_content' %}">Remove Content</a>
+    <a href="{% url 'edit_content' %}">Edit Content</a>
+    <a href="{% url 'read_content' %}">Read Content</a>
+</nav>
+<hr>
+{%endblock%}
+
+{% block footer %}
+<hr>
+<a href="{% url 'index' %}">Go Back</a>
+{% endblock footer%}

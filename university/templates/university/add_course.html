@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{%block title%}
+ADD Course
+{%endblock%}
+{% block header %}
+<nav>
+    <a href="{% url 'add_course' %}">Add Course</a>
+    <a href="{% url 'remove_course' %}">Remove Course</a>
+    <a href="{% url 'edit_course' %}">Edit Course</a>
+    <a href="{% url 'read_course' %}">Read Course</a>
+</nav>
+<hr>
+{%endblock%}
+
+{% block body %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+{% endblock body %}
+
+{% block footer %}
+<hr>
+<a href="{% url 'index' %}">Go Back</a>
+{% endblock footer%}

@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{%block title%}
+READ Regitration
+{%endblock%}
+{% block header %}
+<nav>
+    <a href="{% url 'add_register' %}">Add Registration</a>
+    <a href="{% url 'remove_register' %}">Remove Registration</a>
+    <a href="{% url 'edit_register' %}">Edit Registration</a>
+    <a href="{% url 'read_register' %}">Read Registration</a>
+</nav>
+<hr>
+{%endblock%}
+
+{% block footer %}
+<hr>
+<a href="{% url 'index' %}">Go Back</a>
+{% endblock footer%}

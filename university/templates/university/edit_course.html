@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{%block title%}
+EDIT Course
+{%endblock%}
+{% block header %}
+<nav>
+    <a href="{% url 'add_course' %}">Add Course</a>
+    <a href="{% url 'remove_course' %}">Remove Course</a>
+    <a href="{% url 'edit_course' %}">Edit Course</a>
+    <a href="{% url 'read_course' %}">Read Course</a>
+</nav>
+<hr>
+{%endblock%}
+
+{% block footer %}
+<hr>
+<a href="{% url 'index' %}">Go Back</a>
+{% endblock footer%}
