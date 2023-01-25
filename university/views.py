@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .forms import *
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -8,6 +10,7 @@ def index(request):
     return render(request, 'university/index.html')
 
 # Student
+@login_required(login_url='login')
 def add_student(request):
     forms=StudentForm()
     if request.method=='POST':
@@ -19,6 +22,8 @@ def add_student(request):
         'form':forms
     }
     return render(request, 'university/add_student.html',context=context)
+
+@login_required(login_url='login')
 def remove_student(request,pk):
     student=Student.objects.get(id=pk)
     if request.method=='POST':
@@ -27,6 +32,7 @@ def remove_student(request,pk):
         'content':student
     }
     return render(request, 'university/remove_student.html',context=context)
+@login_required(login_url='login')
 def edit_student(request,pk):
     student=Student.objects.get(id=pk)
     forms=StudentForm(instance=student)
@@ -38,6 +44,7 @@ def edit_student(request,pk):
         'form':forms
     }
     return render(request, 'university/edit_student.html',context=context)
+@login_required(login_url='login')
 def read_student(request,pk):
     student=Student.objects.get(id=pk)
     context={
@@ -122,6 +129,7 @@ def read_course(request, pk):
     return render(request, 'university/read_course.html',context=context)
 
 # Registration
+@login_required(login_url='login')
 def add_registration(request):
     forms=RegistrationForm()
     if request.method=='POST':
@@ -133,6 +141,7 @@ def add_registration(request):
         'form':forms
     }
     return render(request, 'university/add_registration.html',context=context)
+@login_required(login_url='login')
 def remove_registration(request,pk):
     registration=Registration.objects.get(id=pk)
     if request.method=='POST':
@@ -141,6 +150,7 @@ def remove_registration(request,pk):
         'registration':registration
     }
     return render(request, 'university/remove_registration.html',context=context)
+@login_required(login_url='login')
 def edit_registration(request,pk):
     registration=Student.objects.get(id=pk)
     forms=RegistrationForm(instance=registration)
@@ -152,6 +162,7 @@ def edit_registration(request,pk):
         'form':forms
     }
     return render(request, 'university/edit_registration.html',context=context)
+@login_required(login_url='login')
 def read_registration(request, pk):
     registration=Content.objects.get(id=pk)
     context={

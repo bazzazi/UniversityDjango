@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from userinfo.models import Profile
 
 # Create your models here.
 class Student(models.Model):
@@ -21,9 +22,10 @@ class Course(models.Model):
         return self.name
 
 class Registration(models.Model):
+    owner=models.ForeignKey(Profile, on_delete=models.SET_NULL,null=True, blank=True)
     id=models.UUIDField(unique=True, primary_key=True,editable=False,default=uuid.uuid4)
-    Course_ID=models.ForeignKey('Course', on_delete=models.CASCADE)
-    Student_ID=models.ForeignKey('Student',on_delete=models.CASCADE)
+    Course_ID=models.ForeignKey(Course, on_delete=models.CASCADE)
+    Student_ID=models.ForeignKey(Student,on_delete=models.CASCADE)
     created=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
